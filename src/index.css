@@ -2,77 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #147039;
-  --color-on-primary: #FFFFFF;
-  --color-secondary: #04A079;
-  --color-on-secondary: #000000;
-  --color-accent: #CE7D05;
-  --color-on-accent: #000000;
-  --color-bg: #E7FCEE;
-  --color-fg: #0F172A;
-  --color-card: #FFFFFF;
-  --color-card-fg: #0F172A;
-  --color-muted: #E9F5EE;
-  --color-muted-fg: #606F85;
-  --color-border: #E2EFE7;
-  --color-ring: #15803D;
-  --color-destructive: #DC2626;
-  --color-on-destructive: #FFFFFF;
-  --font-heading: 'Lora', serif;
-  --font-body: 'Raleway', sans-serif;
-}
-
-::selection {
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
-}
-
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-}
-
-/* Custom scrollbar for chat */
-.chat-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-.chat-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.chat-scroll::-webkit-scrollbar-thumb {
-  background-color: var(--color-border);
-  border-radius: 3px;
-}
-.chat-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-muted-fg);
-}
-
-/* VS Code style sidebar */
-.vscode-sidebar {
-  border-left: 1px solid var(--color-border);
-  background: var(--color-card);
-}
-
-/* Code-like styling for AI responses */
-.ai-code-block {
-  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-/* Sparkline animation */
-@keyframes draw-line {
-  from { stroke-dashoffset: 200; }
-  to { stroke-dashoffset: 0; }
-}
-
-.sparkline-path {
-  stroke-dasharray: 200;
-  animation: draw-line 1.5s ease-out forwards;
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
 }

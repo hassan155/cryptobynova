@@ -1,17 +1,17 @@
 {
-  "name": "CryptoTracker",
-  "short_name": "CryptoTracker",
-  "description": "Live cryptocurrency prices with AI-powered insights",
+  "name": "NovaTrade Crypto Terminal",
+  "short_name": "NovaTrade",
+  "description": "TradingView-grade crypto dashboard and AI intelligence",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#E7FCEE",
-  "theme_color": "#147039",
-  "orientation": "portrait-primary",
+  "background_color": "#0c0d14",
+  "theme_color": "#131722",
+  "orientation": "any",
   "scope": "/",
   "icons": [
     {
       "src": "/icon.svg",
-      "sizes": "any",
+      "sizes": "192x192 512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }

@@ -8,7 +8,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col font-sans"
       style={{ backgroundColor: tokens.color.background, color: tokens.color.text }}
     >
       {children}

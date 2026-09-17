@@ -1,4 +1,3 @@
-import { tokens } from '../tokens';
 import type { ReactNode } from 'react';
 
 interface SparklineProps {
@@ -10,40 +9,59 @@ interface SparklineProps {
 
 export default function Sparkline({
   data,
-  width = 120,
-  height = 40,
+  width = 140,
+  height = 42,
   positive = true,
 }: SparklineProps): ReactNode {
-  if (!data || data.length < 2) return null;
+  if (!data || data.length < 2) {
+    return (
+      <div
+        style={{ width, height }}
+        className="flex items-center justify-center text-xs text-gray-500 font-mono"
+      >
+        —
+      </div>
+    );
+  }
 
   const min = Math.min(...data);
   const max = Math.max(...data);
   const range = max - min || 1;
 
-  const points = data.map((val, i) => {
-    const x = (i / (data.length - 1)) * width;
-    const y = height - ((val - min) / range) * (height - 4) - 2;
-    return `${x},${y}`;
+  // Generate SVG path points
+  const points = data.map((val, idx) => {
+    const x = (idx / (data.length - 1)) * (width - 6) + 3;
+    const y = height - 4 - ((val - min) / range) * (height - 8);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
   });
 
   const pathD = `M ${points.join(' L ')}`;
-  const color = positive ? tokens.color.primary : tokens.color.destructive;
+  const areaD = `${pathD} L ${width - 3},${height} L 3,${height} Z`;
+
+  const strokeColor = positive ? '#089981' : '#F23645';
+  const gradId = `spark-grad-${positive ? 'up' : 'down'}-${Math.random().toString(36).slice(2, 6)}`;
 
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
       className="overflow-visible"
+      viewBox={`0 0 ${width} ${height}`}
     >
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={strokeColor} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={strokeColor} stopOpacity="0.0" />
+        </linearGradient>
+      </defs>
+      <path d={areaD} fill={`url(#${gradId})`} />
       <path
         d={pathD}
         fill="none"
-        stroke={color}
-        strokeWidth={1.5}
+        stroke={strokeColor}
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="sparkline-path"
       />
     </svg>
   );
