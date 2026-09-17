@@ -1,0 +1,19 @@
+{
+  "name": "CryptoTracker",
+  "short_name": "CryptoTracker",
+  "description": "Live cryptocurrency prices with AI-powered insights",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E7FCEE",
+  "theme_color": "#147039",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
