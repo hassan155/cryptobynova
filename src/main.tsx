@@ -2,11 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import './nova-overrides.css'
+import NovaErrorBoundary from './lib/nova-error-boundary'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <NovaErrorBoundary>
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </NovaErrorBoundary>,
 )
 
 // Register service worker for PWA

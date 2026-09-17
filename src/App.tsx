@@ -16,6 +16,7 @@ import { useCryptoPrices } from './hooks/useCryptoPrices';
 import { useAIChat } from './hooks/useAIChat';
 import CryptoCard from './components/CryptoCard';
 import ChatSidebar from './components/ChatSidebar';
+import Layout from './components/layout/Layout';
 import type { ReactNode } from 'react';
 
 export default function App(): ReactNode {
